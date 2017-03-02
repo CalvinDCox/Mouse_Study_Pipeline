@@ -1,0 +1,10 @@
+#Hisat Index setup
+
+#!/bin/bash
+#PBS -N setup
+#PBS -l select=1:ncpus=4:mem=32gb,walltime=24:00:00
+#PBS -j oe
+
+export PATH=$PATH:/home/calvinc/SOFTWARE/hisat2-2.0.2-beta/
+
+/scratch2/calvinc/Mus_Mouse_Workflow/Mouse_Index/grcm38/make_grcm38.sh

@@ -1,0 +1,16 @@
+#Hisat Alignment
+#!/bin/bash
+#PBS -N FILE.hst
+#PBS -l select=1:ncpus=4:mem=32gb,walltime=24:00:00
+#PBS -j oe
+
+cd /scratch2/calvinc/Mus_Mouse_Workflow/Hisat2/1_250
+
+/home/calvinc/SOFTWARE/hisat2-2.0.2-beta/hisat2 -x /scratch2/calvinc/Mus_Mouse_Workflow/Mouse_Index/grcm38/genome -p 4 -q -1 /scratch2/calvinc/Mus_Mouse_Workflow/Trimmomatic/1_250/SRR2968088_1.forward_paired_trim.fastq.gz -2 /scratch2/calvinc/Mus_Mouse_Workflow/Trimmomatic/1_250/SRR2968088_2.reverse_paired_trim.fastq.gz -S /scratch2/calvinc/Mus_Mouse_Workflow/Hisat2/1_250/SRR2968088.hits.sam -t --dta-cufflinks
+
+#Template for creating 500+ scripts at one time
+FILELIST=(ls *_1.forward_paired_trim.fastq.gz)
+for i in ${FILELIST[@]}; do k=$(echo $i | sed s/_1.forward_paired_trim.fastq.gz//);
+cat /scratch2/calvinc/Mus_Mouse_Workflow/Templates/Hisat_TEMPLATE.pbs | sed 's/FILE/'$k'/g' > /scratch2/calvinc/Mus_Mouse_Workflow/scripts/Hisat/$k.hisat.pbs ;  done
+
+for i in *.hisat.pbs; do qsub $i; done

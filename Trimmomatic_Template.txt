@@ -1,0 +1,17 @@
+#Trimmomatic Template
+
+#!/bin/bash
+#PBS -N FILE.t
+#PBS -l select=1:ncpus=8:mem=16gb,walltime=24:00:00
+#PBS -j oe
+
+cd /scratch2/calvinc/Mus_Mouse_Workflow/Trimmomatic/251_1000
+
+#Calling Trimmomatic
+java -jar /home/calvinc/SOFTWARE/Trimmomatic-0.35/trimmomatic-0.33.jar PE -phred33 /scratch2/calvinc/Mus_Mouse_Workflow/FastQDump/251_1000/FILE_1.fastq.gz /scratch2/calvinc/Mus_Mouse_Workflow/FastQDump/251_1000/FILE2_2.fastq.gz FILE3_1.forward_paired_trim.fastq.gz FILE4_1.forward_unpaired_trim.fastq.gz FILE5_2.reverse_paired_trim.fastq.gz FILE6_2.reverse_unpaired_trim.fastq.gz ILLUMINACLIP:fasta_adapters.txt:2:40:15 LEADING:3 TRAILING:6 SLIDINGWINDOW:4:15 MINLEN:50;
+
+FILELIST=(ls *1.fastq.gz)
+for i in ${FILELIST[@]}; do k=$(echo $i | sed s/_1.fastq.gz//);
+cat /scratch2/calvinc/Mus_Mouse_Workflow/Templates/Trimmomatic_TEMPLATE_251_1000.pbs | sed s/FILE/$k/  | sed s/FILE2/$k/ | sed s/FILE3/$k/ | sed s/FILE4/$k/ | sed s/FILE5/$k/ | sed s/FILE6/$k/ > /scratch2/calvinc/Mus_Mouse_Workflow/scripts/Trimmo/251_1000/$k.trimmomatic.pbs ;  done
+
+for i in *.trimmomatic.pbs; do qsub $i; done
