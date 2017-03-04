@@ -1,24 +1,22 @@
-###********************************************
-### Readme For Study GSE58455, GSE56890 Prep
-### 9/14/2014
-### By: Calvin D. Cox
-### Clemson University 2014
-###********************************************
-### Methods For GSE58455: 
-### 1. Downloaded Accession Data from NCBI Database
-###		Experiment URL: http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58455
-### 2. Input *.sra into Fastq Dump
-### 3. Input SRR1391033.sra into fastqc for a base comparison post-trim
-### 4. Input *.fastq into Trimmomatic (v .30)
-### 5. Input SRR1391033.sra into fastqc for post-trim analysis
-### 6. Run *.fastq through Tophat (v?)
-### 7. Ran treatment .bam outputs through cuffdiff (Cufflinks v 2.1.1)
-### 8. Extracted relevant gene data.
-###*******************************************
-### Key
-### "###"  Readme Comments
-### "#" Code Comments/pbs commands
-### All procedures listed take place in /feltus/calvinc/USCMouse1_58455/ unless specified otherwise in code or comments.
+
+# Readme For Study GSE58455, GSE56890 Prep
+9/14/2014
+By: Calvin D. Cox
+Clemson University 2014
+
+#Methods For GSE58455: **All procedures listed take place in /feltus/calvinc/USCMouse1_58455/ unless specified otherwise in code or comments.
+1. Downloaded Accession Data from NCBI Database
+  Experiment URL: http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58455
+2. Input *.sra into Fastq Dump
+3. Input SRR1391033.sra into fastqc for a base comparison post-trim
+4. Input *.fastq into Trimmomatic (v .30)
+5. Input SRR1391033.sra into fastqc for post-trim analysis
+6. Run *.fastq through Tophat (v?)
+7. Ran treatment .bam outputs through cuffdiff (Cufflinks v 2.1.1)
+8. Extracted relevant gene data.
+
+
+
 ###*******************************************
 ### Treatment Key
 ###
