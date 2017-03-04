@@ -1,10 +1,12 @@
 
 # Readme For Study GSE58455, GSE56890 Prep
-9/14/2014
-By: Calvin D. Cox
-Clemson University 2014
+######9/14/2014
+######By: Calvin D. Cox
+######Clemson University 2014
 
-#Methods For GSE58455: **All procedures listed take place in /feltus/calvinc/USCMouse1_58455/ unless specified otherwise in code or comments.
+#Methods For GSE58455: 
+
+######**All procedures listed take place in /feltus/calvinc/USCMouse1_58455/ unless specified otherwise in code or comments.
 1. Downloaded Accession Data from NCBI Database
   Experiment URL: http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58455
 2. Input *.sra into Fastq Dump
