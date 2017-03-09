@@ -51,3 +51,43 @@ SRR1391042.sra
 SRR1391043.sra  
 SRR1391044.sra  
 SRR1391045.sra  
+
+Files were stored in tophat (/feltus/calvinc/USCMouse1_58455/tophat) used the script below to move them to bambin and rename them with unique names.
+**
+for i in SRR*trimTop; do cp /common1/feltus/calvinc/USCMouse1_58455/tophat/$i/accepted_hits.bam ../$i.accepted_hits.bam; done
+**
+
+
+#####Bam Output with Matching Treatments 
+(Directory: /common1/feltus/calvinc/Mouse_Study_First/trimbin/bambin) 
+
+E13.5 
+SRR33trimTop.accepted_hits.bam 
+SRR34trimTop.accepted_hits.bam 
+SRR35trimTop.accepted_hits.bam 
+SRR36trimTop.accepted_hits.bam 
+SRR37trimTop.accepted_hits.bam 
+SRR38trimTop.accepted_hits.bam 
+SRR39trimTop.accepted_hits.bam 
+
+16 wk 
+SRR46trimTop.accepted_hits.bam 
+SRR47trimTop.accepted_hits.bam 
+SRR48trimTop.accepted_hits.bam 
+SRR49trimTop.accepted_hits.bam 
+SRR50trimTop.accepted_hits.bam 
+SRR51trimTop.accepted_hits.bam 
+
+Sham_12wk 
+SRR52trimTop.accepted_hits.bam 
+SRR53trimTop.accepted_hits.bam 
+SRR54trimTop.accepted_hits.bam 
+SRR55trimTop.accepted_hits.bam 
+
+Adult 6wk 
+SRR40trimTop.accepted_hits.bam 
+SRR41trimTop.accepted_hits.bam 
+SRR42trimTop.accepted_hits.bam 
+SRR43trimTop.accepted_hits.bam 
+SRR44trimTop.accepted_hits.bam 
+SRR45trimTop.accepted_hits.bam 
