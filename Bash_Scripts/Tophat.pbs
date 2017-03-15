@@ -1,0 +1,26 @@
+###***********
+###Tophat Job Scripts(Directory excecuted /feltus/calvinc/USCMouse1_58455/tophat)
+### Sample code below (individual tophat scripts)
+###***********
+#!/bin/bash
+#PBS -N TOPHATSRR33
+#PBS -l select=1:ncpus=1:mem=16gb,walltime=72:00:00
+#PBS -j oe
+
+cd $PBS_O_WORKDIR
+
+#Loading Software
+export PATH=$PATH:/feltus/calvinc/software/bowtie2-2.2.3
+export PATH=$PATH:/feltus/calvinc/software/tophat-2.0.12.Linux_x86_64
+
+#Adding working files to local_scratch
+cp /feltus/calvinc/USCMouse1_58455/trimmomatic/trimSRR1391033.fastq.gz /local_scratch
+cp /feltus/calvinc/USCMouse1_58455/bin/mm10* /local_scratch
+
+#Running Tophat
+tophat -G /feltus/calvinc/USCMouse1_58455/bin/Mus_musculus.GRCm38.76.gtf -o SRR45trimTop /local_scratch/mm10 /local_scratch/trimSRR1391033.fastq.gz
+###**************************
+### Files were stored in tophat (/feltus/calvinc/USCMouse1_58455/tophat) used the script below to move them to bambin and rename them with unique names.
+###**************************
+
+for i in SRR*trimTop; do cp /common1/feltus/calvinc/USCMouse1_58455/tophat/$i/accepted_hits.bam ../$i.accepted_hits.bam; done

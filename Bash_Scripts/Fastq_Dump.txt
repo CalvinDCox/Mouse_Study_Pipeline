@@ -1,0 +1,18 @@
+###********************
+### Fastqdump of all SRA files in working directory. (/feltus/calvinc/USCMouse1_58455/fastqdump)
+###********************
+
+#!/bin/bash
+#PBS -N FASTDUMP
+#PBS -l select=1:ncpus=1:mem=12gb,walltime=72:00:00
+#PBS -j oe
+
+cd $PBS_O_WORKDIR
+
+#Dumping SRA
+
+fastq-dump /feltus/calvinc/USCMouse1_58455/download/*.sra
+
+#Compression
+
+gzip /feltus/calvinc/USCMouse1_58455/fastqdump/*.fastq

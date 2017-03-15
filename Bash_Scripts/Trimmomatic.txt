@@ -1,0 +1,20 @@
+###***************
+### Trimming Fastq files (Directory /feltus/calvinc/USCMouse1_58455/trimmomatic)
+### Below is a sample of one of the trim files (created a trim file for each fastq.gz file.)
+###***************
+#!/bin/bash
+#PBS -N TRIMMO33
+#PBS -l select=1:ncpus=1:mem=16gb,walltime=168:00:00
+#PBS -j oe
+#PBS -q feltus
+
+cd $PBS_O_WORKDIR
+
+#Loading Sofware
+PATH=$PATH:/feltus/calvinc/software/Trimmomatic-0.32
+
+#Copy to localscratch
+cp /feltus/calvinc/USCMouse1_58455/SRR1391033.fastq.gz /local_scratch
+
+#Trim Job
+java -jar /feltus/calvinc/software/Trimmomatic-0.32/trimmomatic-0.32.jar SE -phred33 /local_scratch/SRR1391033.fastq.gz trimSRR1391033.fastq.gz ILLUMINACLIP:illuminaClip-1.fa:2:30:10 LEADING:3 TRAILING:6 SLIDINGWINDOW:4:15 MINLEN:30
