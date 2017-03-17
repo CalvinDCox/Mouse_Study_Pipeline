@@ -1,0 +1,101 @@
+FILELIST=(ls *.sam)
+for i in ${FILELIST[@]}; do
+k=$i;
+cat PythonEC.Template.pbs | sed s/FILE_1.bam.sam/$k/ | sed s/FILE_2.txt/$k.txt/ > $k.PythonEC.pbs;
+done
+
+> mouseTable = data.frame(
++ row.names = c( "SRR33" , "SRR34" , "SRR35" , "SRR36" ,  "SRR37" , "SRR38" , "SRR39", "SRR52", "SRR53", "SRR54", "SRR55"),
++ condition = c( "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "Sham12wk", "Sham12wk", "Sham12wk", "Sham12wk"),
++ libType = c( "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end"))
+> mouseTable
+
+
+> suppressPackageStartupMessages( library( "DEXSeq" ) )
+Creating a generic function for âncharâ from package âbaseâ in package âS4Vectorsâ
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles,
++ sampleData=mouseTable,
++ design= ~ sample + exon + condition:exon,
++ flattenedfile=flattenedFile)
+converting counts to integer mode
+
+
+R version 3.2.2 (2015-08-14) -- "Fire Safety"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> setwd("/scratch1/calvinc/DEXSeqAnalysisMouse2/EmbryovSham")
+> inDir = getwd()
+> countFiles = list.files(inDir, pattern="accepted_hits.txt$", full.names=TRUE)
+> flattenedFile = list.files(inDir, pattern=".gtf$", full.names=TRUE)
+> mouseTable = data.frame(
++ row.names = c( "SRR33" , "SRR34" , "SRR35" , "SRR36" ,  "SRR37" , "SRR38" , "SRR39", "SRR52", "SRR53", "SRR54", "SRR55"),
++ condition = c( "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "Sham12wk", "Sham12wk", "Sham12wk", "Sham12wk"),
++ libType = c( "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end"))
+> suppressPackageStartupMessages( library( "DEXSeq" ) )
+Creating a generic function for âncharâ from package âbaseâ in package âS4Vectorsâ
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles,
++ sampleData=mouseTable,
++ design= ~ sample + exon + condition:exon,
++ flattenedfile=flattenedFile)
+Error in lf[[1]] : subscript out of bounds
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles,
++ sampleData=mouseTable,
++ flattenedfile=flattenedFile)
+Error in lf[[1]] : subscript out of bounds
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles,
++ sampleData=mouseTable,
++ design= ~ sample + exon + condition:exon,
++ flattenedfile=flattenedFile)
+Error in lf[[1]] : subscript out of bounds
+> flattenedFile
+[1] "/scratch1/calvinc/DEXSeqAnalysisMouse2/EmbryovSham/Mus_musculus.GRCm38.76.1-25.compressed.gtf"
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles,
++ sampleData=mouseTable,
++ design= ~ sample + exon + condition:exon,
++ flattenedfile=flattenedFile )
+Error in lf[[1]] : subscript out of bounds
+> countFiles
+character(0)
+> countFiles = list.files(inDir, pattern="accepted_hits.txt$", full.names=TRUE)
+> countFiles
+character(0)
+> getwd()
+[1] "/scratch1/calvinc/DEXSeqAnalysisMouse2/EmbryovSham"
+> countFiles = list.files(inDir, pattern=".bam.sam.txt$", full.names=TRUE)
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles,
++ sampleData=mouseTable,
++ design= ~ sample + exon + condition:exon,
++ flattenedfile=flattenedFile )
+converting counts to integer mode
+> dxd = estimateSizeFactors(dxd)
+> dxd = estimateDispersions(dxd)
+using supplied model matrix
+using supplied model matrix
+> dxd = testForDEU(dxd)
+using supplied model matrix
+> dxd = testForDEU(dxd)
+using supplied model matrix
+found results columns, replacing these
+> dxdr1 = DEXSeqResults(dxd)
+> jpeg(='rplot.jpg')

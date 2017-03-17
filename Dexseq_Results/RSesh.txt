@@ -1,0 +1,294 @@
+[calvinc@node1508 R-3.2.2]$ cd bin
+[calvinc@node1508 bin]$ module add gcc
+[calvinc@node1508 bin]$ ./R
+
+R version 3.2.2 (2015-08-14) -- "Fire Safety"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> setwd(/scratch1/calvinc/DEXSeqAnalysisMouse
+Error: unexpected '/' in "setwd(/"
+> setwd("/scratch1/calvinc/DEXSeqAnalysisMouse")
+> inDir = getwd()
+> inDir
+[1] "/scratch1/calvinc/DEXSeqAnalysisMouse"
+> countFiles = list.files(inDir, pattern="accepted_hits.txt$", full.names=TRUE)
+> countFiles
+ [1] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR33trimTop.accepted_hits.txt"
+ [2] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR34trimTop.accepted_hits.txt"
+ [3] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR35trimTop.accepted_hits.txt"
+ [4] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR36trimTop.accepted_hits.txt"
+ [5] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR37trimTop.accepted_hits.txt"
+ [6] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR38trimTop.accepted_hits.txt"
+ [7] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR39trimTop.accepted_hits.txt"
+ [8] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR40trimTop.accepted_hits.txt"
+ [9] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR41trimTop.accepted_hits.txt"
+[10] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR42trimTop.accepted_hits.txt"
+[11] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR43trimTop.accepted_hits.txt"
+[12] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR44trimTop.accepted_hits.txt"
+[13] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR45trimTop.accepted_hits.txt"
+[14] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR46trimTop.accepted_hits.txt"
+[15] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR47trimTop.accepted_hits.txt"
+[16] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR48trimTop.accepted_hits.txt"
+[17] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR49trimTop.accepted_hits.txt"
+[18] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR50trimTop.accepted_hits.txt"
+[19] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR51trimTop.accepted_hits.txt"
+[20] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR52trimTop.accepted_hits.txt"
+[21] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR53trimTop.accepted_hits.txt"
+[22] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR54trimTop.accepted_hits.txt"
+[23] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR55trimTop.accepted_hits.txt"
+[24] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR56trimTop.accepted_hits.txt"
+[25] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR57trimTop.accepted_hits.txt"
+[26] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR58trimTop.accepted_hits.txt"
+[27] "/scratch1/calvinc/DEXSeqAnalysisMouse/SRR59trimTop.accepted_hits.txt"
+> flattenedFile = list.files(inDir, pattern="gff$", full.names=TRUE)
+> flattenedFile
+[1] "/scratch1/calvinc/DEXSeqAnalysisMouse/Mus_musculus.GRCm38.Some.gff"
+> sampleTable = data.frame(
++ row.names = c( "SRR33" ,"SRR33" ,
++ )
++ row.names = 1
+Error: unexpected symbol in:
+")
+row.names"
+> mouseTable = data.frame(
++ row.names = c( "SRR33" , "SRR34" , "SRR35" , "SRR36" ,  "SRR37" , "SRR38" , "SRR39" , "SRR40" , "SRR41" , "SRR42" , "SRR43" , "SRR44" , "SRR45" , "SRR46" , "SRR47" , 
+"SRR48" , "SRR49" , "SRR50" , "SRR51" , "SRR52" , "SRR53" , "SRR54" , "SRR55" , "SRR56" , "SRR57" , "SRR58" , "SRR59"),
++ condition = c( "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "E13.5", "Adult6wk", "Adult6wk", "Adult6wk", "Adult6wk", "Adult6wk", "Adult6wk", "Adult16wk", "Adult16wk", "Adult16wk", "Adult16wk", "Adult16wk", "Adult16wk", "Sham12wk", "Sham12wk", "Sham12wk", "Sham12wk", "TAC4wk12wk", "TAC4wk12wk", "TAC4wk12wk", "TAC4wk12wk"),
++ libType = c( "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end" , "singl
+e-end" , "single-end" , "single-end" , "single-end" , "single-end" , "single-end"))
+> mouseTable
+       condition    libType
+SRR33      E13.5 single-end
+SRR34      E13.5 single-end
+SRR35      E13.5 single-end
+SRR36      E13.5 single-end
+SRR37      E13.5 single-end
+SRR38      E13.5 single-end
+SRR39      E13.5 single-end
+SRR40   Adult6wk single-end
+SRR41   Adult6wk single-end
+SRR42   Adult6wk single-end
+SRR43   Adult6wk single-end
+SRR44   Adult6wk single-end
+SRR45   Adult6wk single-end
+SRR46  Adult16wk single-end
+SRR47  Adult16wk single-end
+SRR48  Adult16wk single-end
+SRR49  Adult16wk single-end
+SRR50  Adult16wk single-end
+SRR51  Adult16wk single-end
+SRR52   Sham12wk single-end
+SRR53   Sham12wk single-end
+SRR54   Sham12wk single-end
+SRR55   Sham12wk single-end
+SRR56 TAC4wk12wk single-end
+SRR57 TAC4wk12wk single-end
+SRR58 TAC4wk12wk single-end
+SRR59 TAC4wk12wk single-end
+> suppressPackageStartupMessages( library( "DEXSeq" ) )
+Creating a generic function for âncharâ from package âbaseâ in package âS4Vectorsâ
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles
++ sampleData=mouseTable
+Error: unexpected symbol in:
+"countFiles
+sampleData"
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles,
++ sampleData=mouseTable
++ design= ~ sample + exon + condition:exon
+Error: unexpected symbol in:
+"sampleData=mouseTable
+design"
+> dxd = DEXSeqDataSetFromHTSeq(
++ countFiles,
++ sampleData=mouseTable,
++ design= ~ sample + exon + condition:exon,
++ flattenedfile=flattenedFile )
+converting counts to integer mode
+> dxd1 = testForDEU(dxd)
+Error in testForDEU(dxd) : 
+  first call estimateSizeFactors or provide a normalizationFactor matrix
+> dxd1 = estimateSizeFactors(dxd)
+> dxd1
+class: DEXSeqDataSet 
+dim: 582 54 
+exptData(0):
+assays(1): counts
+rownames(582): ENSMUSG00000002107:E001 ENSMUSG00000002107:E002 ...
+  ENSMUSG00000057666:E030 ENSMUSG00000057666:E031
+rowRanges metadata column names(5): featureID groupID exonBaseMean
+  exonBaseVar transcripts
+colnames: NULL
+colData names(5): sample condition libType exon sizeFactor
+> dxd1
+class: DEXSeqDataSet 
+dim: 582 54 
+exptData(0):
+assays(1): counts
+rownames(582): ENSMUSG00000002107:E001 ENSMUSG00000002107:E002 ...
+  ENSMUSG00000057666:E030 ENSMUSG00000057666:E031
+rowRanges metadata column names(5): featureID groupID exonBaseMean
+  exonBaseVar transcripts
+colnames: NULL
+colData names(5): sample condition libType exon sizeFactor
+> dxd2 = testforDEU(dxd1)
+Error: could not find function "testforDEU"
+> dxd2 = testForDEU(dxd1)
+Error in testForDEU(dxd1) : first call estimateDispersions
+> dxd1 = estimateSizeFactors(dxd)
+> dxd2 = testForDEU(dxd1)
+Error in testForDEU(dxd1) : first call estimateDispersions
+> dxd2 = estimateDispersions(dxd1)
+using supplied model matrix
+^[[A^[[B-- note: fitType='parametric', but the dispersion trend was not well captured by the
+   function: y = a/x + b, and a local regression fit was automatically substituted.
+   specify fitType='local' or 'mean' to avoid this message next time.
+using supplied model matrix
+> dxd3 = testForDEU(dxd2)
+using supplied model matrix
+> dxd3
+class: DEXSeqDataSet 
+dim: 582 54 
+exptData(0):
+assays(3): counts mu cooks
+rownames(582): ENSMUSG00000002107:E001 ENSMUSG00000002107:E002 ...
+  ENSMUSG00000057666:E030 ENSMUSG00000057666:E031
+rowRanges metadata column names(85): featureID groupID ... deviance
+  maxCooks
+colnames: NULL
+colData names(5): sample condition libType exon sizeFactor
+> dxd4= estimateExonFoldChanges(dxd3, fitExpToVar="condition")
+> dxd4
+class: DEXSeqDataSet 
+dim: 582 54 
+exptData(0):
+assays(3): counts mu cooks
+rownames(582): ENSMUSG00000002107:E001 ENSMUSG00000002107:E002 ...
+  ENSMUSG00000057666:E030 ENSMUSG00000057666:E031
+rowRanges metadata column names(94): featureID groupID ...
+  log2fold_Sham12wk_E13.5 log2fold_TAC4wk12wk_E13.5
+colnames: NULL
+colData names(5): sample condition libType exon sizeFactor
+> dxdr1 = DEXSeqResults(dxd4)
+> dxdr1
+
+LRT p-value: full vs reduced
+
+DataFrame with 582 rows and 19 columns
+                                   groupID   featureID exonBaseMean  dispersion
+                               <character> <character>    <numeric>   <numeric>
+ENSMUSG00000002107:E001 ENSMUSG00000002107        E001    0.0000000          NA
+ENSMUSG00000002107:E002 ENSMUSG00000002107        E002   62.0473543 0.005979932
+ENSMUSG00000002107:E003 ENSMUSG00000002107        E003   80.6062900 0.003706129
+ENSMUSG00000002107:E004 ENSMUSG00000002107        E004   94.0015905 0.005920118
+ENSMUSG00000002107:E005 ENSMUSG00000002107        E005    0.8306436 0.019880347
+...                                    ...         ...          ...         ...
+ENSMUSG00000057666:E027 ENSMUSG00000057666        E027     4.891518 0.017555774
+ENSMUSG00000057666:E028 ENSMUSG00000057666        E028     3.292959 0.008197721
+ENSMUSG00000057666:E029 ENSMUSG00000057666        E029     1.407803 0.018032381
+ENSMUSG00000057666:E030 ENSMUSG00000057666        E030     2.042890 0.072589050
+ENSMUSG00000057666:E031 ENSMUSG00000057666        E031     0.603857 0.067673996
+                              stat       pvalue         padj    Adult16wk
+                         <numeric>    <numeric>    <numeric>    <numeric>
+ENSMUSG00000002107:E001         NA           NA           NA 1.349572e-04
+ENSMUSG00000002107:E002  76.643932 8.945752e-16 5.079909e-15 7.342048e+01
+ENSMUSG00000002107:E003  32.471032 1.532602e-06 4.747084e-06 9.571988e+01
+ENSMUSG00000002107:E004  66.743967 1.103917e-13 5.542825e-13 1.072400e+02
+ENSMUSG00000002107:E005   5.833195 2.119565e-01 2.847979e-01 8.894479e-05
+...                            ...          ...          ...          ...
+ENSMUSG00000057666:E027 105.450796 6.789380e-22 4.906870e-21 2.2501346296
+ENSMUSG00000057666:E028 104.742791 9.609494e-22 6.841386e-21 1.3495070644
+ENSMUSG00000057666:E029  12.043332 1.703193e-02 3.136768e-02 1.3496150023
+ENSMUSG00000057666:E030   8.264146 8.236758e-02 1.279783e-01 1.8017887003
+ENSMUSG00000057666:E031  15.204211 4.295882e-03 8.832481e-03 0.0002296761
+                            Adult6wk        E13.5     Sham12wk   TAC4wk12wk
+                           <numeric>    <numeric>    <numeric>    <numeric>
+ENSMUSG00000002107:E001 1.134934e-04 8.536604e-05 9.844285e-05 9.023551e-05
+ENSMUSG00000002107:E002 6.992949e+01 3.626771e+01 5.995695e+01 5.508876e+01
+ENSMUSG00000002107:E003 8.623511e+01 6.416877e+01 6.391129e+01 7.484436e+01
+ENSMUSG00000002107:E004 1.092056e+02 9.322568e+01 7.725033e+01 5.765957e+01
+ENSMUSG00000002107:E005 7.399765e-01 1.064106e+00 1.406217e+00 1.295908e+00
+...                              ...          ...          ...          ...
+ENSMUSG00000057666:E027 0.6151692853    1.9285484    10.401055    12.888819
+ENSMUSG00000057666:E028 0.6155667994    1.2228635     5.160662    12.233498
+ENSMUSG00000057666:E029 0.6157147320    0.8639889     1.291743     3.701057
+ENSMUSG00000057666:E030 1.8522049031    1.2448218     1.537338     4.923747
+ENSMUSG00000057666:E031 0.0001697493    0.3296187     1.407197     1.828441
+                        log2fold_Adult16wk_E13.5 log2fold_Adult6wk_E13.5
+                                       <numeric>               <numeric>
+ENSMUSG00000002107:E001                0.6607681               0.4108746
+ENSMUSG00000002107:E002                1.0174967               0.9472151
+ENSMUSG00000002107:E003                0.5769473               0.4264040
+ENSMUSG00000002107:E004                0.2020444               0.2282474
+ENSMUSG00000002107:E005              -13.5463717              -0.5240901
+...                                          ...                     ...
+ENSMUSG00000057666:E027                0.2224960              -1.6484599
+ENSMUSG00000057666:E028                0.1421692              -0.9902760
+ENSMUSG00000057666:E029                0.6434632              -0.4887507
+ENSMUSG00000057666:E030                0.5334906               0.5733045
+ENSMUSG00000057666:E031              -10.4869817             -10.9231764
+                        log2fold_Sham12wk_E13.5 log2fold_TAC4wk12wk_E13.5
+                                      <numeric>                 <numeric>
+ENSMUSG00000002107:E001             0.205624242                0.08003304
+ENSMUSG00000002107:E002             0.725241289                0.60307210
+ENSMUSG00000002107:E003            -0.005800504                0.22202218
+ENSMUSG00000002107:E004            -0.271186273               -0.69316732
+ENSMUSG00000002107:E005             0.402177774                0.28432165
+...                                         ...                       ...
+ENSMUSG00000057666:E027               2.4311426                  2.740533
+ENSMUSG00000057666:E028               2.0772929                  3.322502
+ENSMUSG00000057666:E029               0.5802348                  2.098853
+ENSMUSG00000057666:E030               0.3044954                  1.983818
+ENSMUSG00000057666:E031               2.0939543                  2.471744
+                                          genomicData       countData
+                                            <GRanges>        <matrix>
+ENSMUSG00000002107:E001     chr2:-:[6539694, 6539704]       0 0 0 ...
+ENSMUSG00000002107:E002     chr2:-:[6539705, 6541868]   107 73 73 ...
+ENSMUSG00000002107:E003     chr2:-:[6541869, 6543429] 170 109 132 ...
+ENSMUSG00000002107:E004     chr2:-:[6543430, 6544806] 301 158 214 ...
+ENSMUSG00000002107:E005     chr2:-:[6544807, 6544840]       2 2 1 ...
+...                                               ...             ...
+ENSMUSG00000057666:E027 chr6:-:[125165577, 125165590]      18 5 9 ...
+ENSMUSG00000057666:E028 chr6:-:[125165591, 125165603]       7 3 4 ...
+ENSMUSG00000057666:E029 chr6:-:[125165604, 125165605]       5 0 4 ...
+ENSMUSG00000057666:E030 chr6:-:[125165606, 125165773]       7 0 7 ...
+ENSMUSG00000057666:E031 chr6:-:[125166394, 125166467]       2 0 2 ...
+                        transcripts
+                             <list>
+ENSMUSG00000002107:E001    ########
+ENSMUSG00000002107:E002    ########
+ENSMUSG00000002107:E003    ########
+ENSMUSG00000002107:E004    ########
+ENSMUSG00000002107:E005    ########
+...                             ...
+ENSMUSG00000057666:E027    ########
+ENSMUSG00000057666:E028    ########
+ENSMUSG00000057666:E029    ########
+ENSMUSG00000057666:E030    ########
+ENSMUSG00000057666:E031    ########
+> write.table(dxdr1, inDir, sep="\t")
+Error in file(file, ifelse(append, "a", "w")) : 
+  cannot open the connection
+In addition: Warning message:
+In file(file, ifelse(append, "a", "w")) :
+  cannot open file '/scratch1/calvinc/DEXSeqAnalysisMouse': Is a directory
+> write.table(dxdr1, "/scratch1/calvinc/resultsone.txt" , sep="\t")
+> plotDexSeq( dxr1,=>> PBS: job killed: walltime 7204 exceeded limit 7200
+
+qsub: job 710099.pbs02 completed
