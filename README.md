@@ -1,12 +1,14 @@
 
 # Readme For Study GSE58455, GSE56890 Prep
-######9/14/2014
-######By: Calvin D. Cox
-######Clemson University 2014
+###### 9/14/2014
+###### By: Calvin D. Cox
+###### Clemson University 2014 
 
-#Methods For GSE58455: 
+Summary: This is an NGS Workflow that I constructed to evaluate expression levels in select genes from Mouse Samples.
 
-######**All procedures listed take place in /feltus/calvinc/USCMouse1_58455/ unless specified otherwise in code or comments.
+# Methods For GSE58455: 
+
+###### **All procedures listed take place in /feltus/calvinc/USCMouse1_58455/ unless specified otherwise in code or comments.
 1. Downloaded Accession Data from NCBI Database
   Experiment URL: http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58455
 2. Input *.sra into Fastq Dump
@@ -19,9 +21,9 @@
 
 
 
-##Treatment Key
+## Treatment Key
 
-#####Embryo 13.5 Week
+##### Embryo 13.5 Week
 SRR1391033.sra  
 SRR1391036.sra  
 SRR1391034.sra  
@@ -30,7 +32,7 @@ SRR1391039.sra
 SRR1391035.sra  
 SRR1391037.sra  
 
-#####16 Week Adult
+##### 16 Week Adult
 SRR1391051.sra  
 SRR1391050.sra  
 SRR1391049.sra  
@@ -38,13 +40,13 @@ SRR1391048.sra
 SRR1391047.sra  
 SRR1391046.sra  
 
-#####Sham 12 Week Adult
+##### Sham 12 Week Adult
 SRR1391052.sra  
 SRR1391053.sra  
 SRR1391054.sra  
 SRR1391055.sra  
 
-#####6 Week Adult
+##### 6 Week Adult
 SRR1391040.sra  
 SRR1391041.sra  
 SRR1391042.sra  
@@ -58,7 +60,7 @@ for i in SRR*trimTop; do cp /common1/feltus/calvinc/USCMouse1_58455/tophat/$i/ac
 **
 
 
-#####Bam Output with Matching Treatments 
+##### Bam Output with Matching Treatments 
 (Directory: /common1/feltus/calvinc/Mouse_Study_First/trimbin/bambin) 
 
 E13.5 
